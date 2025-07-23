@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # Get the parameters.
 SCALE=$1
 LOCATION=$2
@@ -6,6 +7,7 @@ CONN_IMPALA_SHELL=$3
 
 if [ X"$CONN_IMPALA_SHELL" = "X" ]; then
         CONN_IMPALA_SHELL="localhost:21050"
+fi
 
 echo "Creating external tables."
 
