@@ -28,7 +28,7 @@ create external table if not exists store_sales(
 ,     ss_net_paid_inc_tax decimal(7,2)
 ,     ss_net_profit decimal(7,2)  
 )
-row format delimited fields terminated by '|'
+row format delimited fields terminated by '|' stored as textfile
 location '${var:LOCATION}/store_sales'
 ;
 
@@ -57,7 +57,7 @@ create external table if not exists store_returns(
 ,     sr_store_credit decimal(7,2)
 ,     sr_net_loss decimal(7,2)
 )
-row format delimited fields terminated by '|' 
+row format delimited fields terminated by '|' stored as textfile 
 location '${var:LOCATION}/store_returns'
 ;
 
@@ -100,7 +100,7 @@ create external table if not exists catalog_sales(
 ,     cs_net_paid_inc_ship_tax decimal(7,2)
 ,     cs_net_profit decimal(7,2)
 )
-row format delimited fields terminated by '|' 
+row format delimited fields terminated by '|' stored as textfile 
 location '${var:LOCATION}/catalog_sales'
 ;
 
@@ -136,7 +136,7 @@ create external table if not exists catalog_returns(
 ,     cr_store_credit decimal(7,2)
 ,     cr_net_loss decimal(7,2)  
 )
-row format delimited fields terminated by '|' 
+row format delimited fields terminated by '|' stored as textfile 
 location '${var:LOCATION}/catalog_returns'
 ;
 
@@ -179,7 +179,7 @@ create external table if not exists web_sales(
 ,     ws_net_paid_inc_ship_tax decimal(7,2)
 ,     ws_net_profit decimal(7,2)
 )
-row format delimited fields terminated by '|' 
+row format delimited fields terminated by '|' stored as textfile 
 location '${var:LOCATION}/web_sales'
 ;
 
@@ -212,7 +212,7 @@ create external table if not exists web_returns(
 ,     wr_account_credit decimal(7,2)
 ,     wr_net_loss decimal(7,2) 
 )
-row format delimited fields terminated by '|' 
+row format delimited fields terminated by '|' stored as textfile 
 location '${var:LOCATION}/web_returns'
 ;
 
@@ -225,7 +225,7 @@ create external table if not exists inventory(
 ,     inv_warehouse_sk bigint
 ,     inv_quantity_on_hand int
 )
-row format delimited fields terminated by '|'
+row format delimited fields terminated by '|' stored as textfile
 location '${var:LOCATION}/inventory';
 
 -- Table<store (29 cols)>
@@ -262,7 +262,7 @@ create external table if not exists store(
 ,     s_gmt_offset decimal(5,2)
 ,     s_tax_percentage decimal(5,2)
 )
-row format delimited fields terminated by '|'
+row format delimited fields terminated by '|' stored as textfile
 location '${var:LOCATION}/store'
 tblproperties ('serialization.null.format'='');
 
@@ -302,7 +302,7 @@ create external table if not exists call_center(
 ,     cc_gmt_offset decimal(5,2)
 ,     cc_tax_percentage decimal(5,2)
 )
-row format delimited fields terminated by '|'
+row format delimited fields terminated by '|' stored as textfile
 location '${var:LOCATION}/call_center'
 tblproperties ('serialization.null.format'='');
 
@@ -320,7 +320,7 @@ create external table if not exists catalog_page(
 ,     cp_description varchar(100)
 ,     cp_type varchar(100)
 )
-row format delimited fields terminated by '|'
+row format delimited fields terminated by '|' stored as textfile
 location '${var:LOCATION}/catalog_page'
 tblproperties ('serialization.null.format'='');
 
@@ -355,7 +355,7 @@ create external table if not exists web_site(
 ,     web_gmt_offset decimal(5,2)  
 ,     web_tax_percentage decimal(5,2)
 )
-row format delimited fields terminated by '|'
+row format delimited fields terminated by '|' stored as textfile
 location '${var:LOCATION}/web_site'
 tblproperties ('serialization.null.format'='');
 
@@ -378,7 +378,7 @@ create external table if not exists web_page(
 ,     wp_image_count int
 ,     wp_max_ad_count int
 )
-row format delimited fields terminated by '|'
+row format delimited fields terminated by '|' stored as textfile
 location '${var:LOCATION}/web_page'
 tblproperties ('serialization.null.format'='');
 
@@ -401,7 +401,7 @@ create external table if not exists warehouse(
 ,     w_country varchar(20)
 ,     w_gmt_offset decimal(5,2)
 )
-row format delimited fields terminated by '|'
+row format delimited fields terminated by '|' stored as textfile
 location '${var:LOCATION}/warehouse'
 tblproperties ('serialization.null.format'='');
 
@@ -428,7 +428,7 @@ create external table if not exists customer(
 ,     c_email_address char(50)
 ,     c_last_review_date_sk bigint
 )
-row format delimited fields terminated by '|'
+row format delimited fields terminated by '|' stored as textfile
 location '${var:LOCATION}/customer'
 tblproperties ('serialization.null.format'='');
 
@@ -450,7 +450,7 @@ create external table if not exists customer_address(
 ,     ca_gmt_offset decimal(5,2)
 ,     ca_location_type char(20)
 )
-row format delimited fields terminated by '|'
+row format delimited fields terminated by '|' stored as textfile
 location '${var:LOCATION}/customer_address'
 tblproperties ('serialization.null.format'='');
 
@@ -468,7 +468,7 @@ create external table if not exists customer_demographics(
 ,     cd_dep_employed_count int
 ,     cd_dep_college_count int
 )
-row format delimited fields terminated by '|'
+row format delimited fields terminated by '|' stored as textfile
 location '${var:LOCATION}/customer_demographics'
 tblproperties ('serialization.null.format'='');
 
@@ -505,7 +505,7 @@ create external table if not exists date_dim(
 ,     d_current_quarter char(1)
 ,     d_current_year char(1)
 )
-row format delimited fields terminated by '|'
+row format delimited fields terminated by '|' stored as textfile
 location '${var:LOCATION}/date_dim'
 tblproperties ('serialization.null.format'='');
 
@@ -519,7 +519,7 @@ create external table if not exists household_demographics(
 ,     hd_dep_count int
 ,     hd_vehicle_count int
 )
-row format delimited fields terminated by '|'
+row format delimited fields terminated by '|' stored as textfile
 location '${var:LOCATION}/household_demographics'
 tblproperties ('serialization.null.format'='');
 
@@ -550,7 +550,7 @@ create external table if not exists item(
 ,     i_manager_id int
 ,     i_product_name char(50)
 )
-row format delimited fields terminated by '|'
+row format delimited fields terminated by '|' stored as textfile
 location '${var:LOCATION}/item'
 tblproperties ('serialization.null.format'='');
 
@@ -562,7 +562,7 @@ create external table if not exists income_band(
 ,     ib_lower_bound int
 ,     ib_upper_bound int
 )
-row format delimited fields terminated by '|'
+row format delimited fields terminated by '|' stored as textfile
 location '${var:LOCATION}/income_band';
 
 -- Table<promotion (19 cols)>
@@ -589,7 +589,7 @@ create external table if not exists promotion(
 ,     p_purpose char(15)
 ,     p_discount_active char(1)
 )
-row format delimited fields terminated by '|'
+row format delimited fields terminated by '|' stored as textfile
 location '${var:LOCATION}/promotion'
 tblproperties ('serialization.null.format'='');
 
@@ -601,7 +601,7 @@ create external table if not exists reason(
 ,     r_reason_id char(16)
 ,     r_reason_desc char(100)
 )
-row format delimited fields terminated by '|'
+row format delimited fields terminated by '|' stored as textfile
 location '${var:LOCATION}/reason'
 tblproperties ('serialization.null.format'='');
 
@@ -616,7 +616,7 @@ create external table if not exists ship_mode(
 ,     sm_carrier char(20)
 ,     sm_contract char(20)
 )
-row format delimited fields terminated by '|'
+row format delimited fields terminated by '|' stored as textfile
 location '${var:LOCATION}/ship_mode'
 tblproperties ('serialization.null.format'='');
 
@@ -635,7 +635,7 @@ create external table if not exists time_dim(
 ,     t_sub_shift char(20)
 ,     t_meal_time char(20)
 )
-row format delimited fields terminated by '|'
+row format delimited fields terminated by '|' stored as textfile
 location '${var:LOCATION}/time_dim'
 tblproperties ('serialization.null.format'='');
 
