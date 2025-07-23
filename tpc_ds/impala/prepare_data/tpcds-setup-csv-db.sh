@@ -1,5 +1,13 @@
 #!/bin/bash
 
+function runcommand {
+        if [ "X$DEBUG_SCRIPT" != "X" ]; then
+                $1
+        else
+                $1 2>/dev/null
+        fi
+}
+
 # Get the parameters.
 SCALE=$1
 LOCATION=$2
